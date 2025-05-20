@@ -17,6 +17,18 @@ class Activator(Utils):
             PATCH_FILEPATH = os.path.join(BASE_DIR, "driver", filename)
             shutil.copy(PATCH_FILEPATH, CURRENT_FILEPATH)
 
+        # 
+        INIT_PATH = os.path.join(PLAYWRIGHT_PATH, "__init__.py")
+        line_to_add = 'print("XDriver(active) : Running on x-driver session")\n'
+        with open(INIT_PATH, 'r') as file:
+            original_contents = file.read()
+
+        new_contents = line_to_add + original_contents
+        with open(INIT_PATH, 'w') as file:
+            file.write(new_contents)
+
+
+
     def _unpatch(self, PLAYWRIGHT_PATH, config):
         for filename, filepath in config.items():
             CURRENT_FILEPATH = os.path.join(PLAYWRIGHT_PATH, "driver", filepath, filename)
@@ -26,6 +38,15 @@ class Activator(Utils):
 
             os.remove(CURRENT_FILEPATH)
             os.rename(CACHE_FILEPATH, CURRENT_FILEPATH)
+
+        # 
+        INIT_PATH = os.path.join(PLAYWRIGHT_PATH, "__init__.py")
+        line_to_delete = 'print("XDriver(active) : Running on x-driver session")\n'
+        with open(INIT_PATH, 'r') as file:
+            original_contents = file.read()
+        original_contents = original_contents.replace(line_to_delete, "")
+        with open(INIT_PATH, 'w') as file:
+            file.write(original_contents)
 
     def activate(self):
         try:
