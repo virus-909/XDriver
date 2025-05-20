@@ -19,7 +19,7 @@ class Activator(Utils):
 
         # 
         INIT_PATH = os.path.join(PLAYWRIGHT_PATH, "__init__.py")
-        line_to_add = 'print("XDriver(active) : Running on x-driver session")\n'
+        line_to_add = 'print("X-Driver(active) : Running on x-driver session")\n'
         with open(INIT_PATH, 'r') as file:
             original_contents = file.read()
 
@@ -41,7 +41,7 @@ class Activator(Utils):
 
         # 
         INIT_PATH = os.path.join(PLAYWRIGHT_PATH, "__init__.py")
-        line_to_delete = 'print("XDriver(active) : Running on x-driver session")\n'
+        line_to_delete = 'print("X-Driver(active) : Running on x-driver session")\n'
         with open(INIT_PATH, 'r') as file:
             original_contents = file.read()
         original_contents = original_contents.replace(line_to_delete, "")
