@@ -1,0 +1,3 @@
+recursive-include x_driver *.json *.js
+recursive-include x_driver *.json
+recursive-include x_driver/driver *.js

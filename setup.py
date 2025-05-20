@@ -11,6 +11,7 @@ setup(
     license="MIT",
     version=" ".join([i.strip() for i in open("VERSION.txt")]).strip(),
     packages=find_packages(),
+    include_package_data=True,
     entry_points={
         "console_scripts": [
             "x_driver=x_driver.__main__:activator",
