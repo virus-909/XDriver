@@ -515,7 +515,7 @@ class RouteImpl {
       method: overrides.method,
       postData: overrides.postData ? overrides.postData.toString("base64") : void 0
     };
-    if (overrides.url && (overrides.url === "http://patchright-init-script-inject.internal/" || overrides.url === "https://patchright-init-script-inject.internal/")) {
+    if (overrides.url && (overrides.url === "http://xdriver-init-script-inject.internal/" || overrides.url === "https://xdriver-init-script-inject.internal/")) {
       await catchDisallowedErrors(async () => {
         this._sessionManager._alreadyTrackedNetworkIds.add(this._networkId);
         this._session.send("Fetch.continueRequest", { requestId: this._interceptionId, interceptResponse: true });
